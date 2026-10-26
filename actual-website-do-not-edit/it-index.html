@@ -17,8 +17,8 @@
 	<div class="top-bar-title">Friendly Frame</div>
 	<div class="top-bar-subtitle"></div>
 	<div class="signpost">
-	<a href="en-index.html">English</a>
-	<a href="it-index.html">Italiano</a>
+	<a class="signpost-link" href="en-index.html">English</a>
+	<a class="signpost-link" href="it-index.html">Italiano</a>
 </div>
 
 </div>
@@ -36,12 +36,12 @@
 					<div class="example-note"><div>Queste due schede autore sono lo stesso elemento riutilizzabile, ognuna con un'immagine diversa. Anche la barra in alto di questa pagina è uno di questi.</div></div>
 					<div class="index-authors">
 						<div class="author">
-	<img src="shared/images/authors.jane_doe.svg" alt="">
+	<img class="author-picture" src="shared/images/authors.jane_doe.svg" alt="">
 	Jane Doe
 </div>
 
 						<div class="author">
-	<img src="shared/images/authors.john_smith.svg" alt="">
+	<img class="author-picture" src="shared/images/authors.john_smith.svg" alt="">
 	John Smith
 </div>
 
@@ -64,12 +64,12 @@
 &lt;/div&gt;</div>
 						<div class="example-file">edit-me/shared/reusables/signpost/signpost.html</div>
 						<div class="code">&lt;div class="signpost"&gt;
-	&lt;a href="&lt;root&gt;/en-index.html"&gt;English&lt;/a&gt;
-	&lt;a href="&lt;root&gt;/it-index.html"&gt;Italiano&lt;/a&gt;
+	&lt;a class="signpost-link" href="&lt;root&gt;/en-index.html"&gt;English&lt;/a&gt;
+	&lt;a class="signpost-link" href="&lt;root&gt;/it-index.html"&gt;Italiano&lt;/a&gt;
 &lt;/div&gt;</div>
 						<div class="example-file">edit-me/shared/reusables/author/author.html</div>
 						<div class="code">&lt;div class="author"&gt;
-	&lt;img src="&lt;root&gt;/shared/images/{picture}" alt=""&gt;
+	&lt;img class="author-picture" src="&lt;root&gt;/shared/images/{picture}" alt=""&gt;
 	[picture]
 &lt;/div&gt;</div>
 						<div class="example-file">edit-me/shared/reusables-compilation-order.txt</div>
@@ -94,17 +94,17 @@ reusables/top-bar</div>
 		&lt;div class="top-bar-title"&gt;Friendly Frame&lt;/div&gt;
 		&lt;div class="top-bar-subtitle"&gt;&lt;/div&gt;
 		&lt;div class="signpost"&gt;
-			&lt;a href="en-index.html"&gt;English&lt;/a&gt;
-			&lt;a href="it-index.html"&gt;Italiano&lt;/a&gt;
+			&lt;a class="signpost-link" href="en-index.html"&gt;English&lt;/a&gt;
+			&lt;a class="signpost-link" href="it-index.html"&gt;Italiano&lt;/a&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
 	...
 	&lt;div class="author"&gt;
-		&lt;img src="shared/images/authors.jane_doe.svg" alt=""&gt;
+		&lt;img class="author-picture" src="shared/images/authors.jane_doe.svg" alt=""&gt;
 		Jane Doe
 	&lt;/div&gt;
 	&lt;div class="author"&gt;
-		&lt;img src="shared/images/authors.john_smith.svg" alt=""&gt;
+		&lt;img class="author-picture" src="shared/images/authors.john_smith.svg" alt=""&gt;
 		John Smith
 	&lt;/div&gt;
 	...
@@ -185,8 +185,8 @@ if (year)
 					<div class="example-live-title"><div>Esempio dal vivo</div></div>
 					<div class="example-note"><div>Cambia lingua: cambia tutto tranne il codice, e resti nello stesso punto della pagina.</div></div>
 					<div class="signpost">
-	<a href="en-index.html">English</a>
-	<a href="it-index.html">Italiano</a>
+	<a class="signpost-link" href="en-index.html">English</a>
+	<a class="signpost-link" href="it-index.html">Italiano</a>
 </div>
 
 				</div>

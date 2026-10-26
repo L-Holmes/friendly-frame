@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const language = (_a = /^([a-z]{2})-/.exec(page)) === null || _a === void 0 ? void 0 : _a[1];
     const pageWithoutLanguage = page.replace(/^[a-z]{2}-/, "");
     // The language links: go to this same page, in the other language
-    document.querySelectorAll(".signpost a").forEach((link) => {
+    document.querySelectorAll(".signpost-link").forEach((link) => {
         var _a;
         const linkLanguage = (_a = /([a-z]{2})-[^/]*$/.exec(link.getAttribute("href") || "")) === null || _a === void 0 ? void 0 : _a[1];
         link.setAttribute("href", `${linkLanguage}-${pageWithoutLanguage}`);

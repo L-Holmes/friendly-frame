@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const pageWithoutLanguage = page.replace(/^[a-z]{2}-/, "");
 
 	// The language links: go to this same page, in the other language
-	document.querySelectorAll(".signpost a").forEach((link) => {
+	document.querySelectorAll(".signpost-link").forEach((link) => {
 		const linkLanguage = /([a-z]{2})-[^/]*$/.exec(link.getAttribute("href") || "")?.[1];
 		link.setAttribute("href", `${linkLanguage}-${pageWithoutLanguage}`);
 		link.addEventListener("click", () => sessionStorage.setItem("scroll", String(window.scrollY)));
