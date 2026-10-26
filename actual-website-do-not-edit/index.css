@@ -1,0 +1,154 @@
+@charset "UTF-8";
+.index-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.index-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.index-intro {
+  max-width: 800px;
+}
+
+.example {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+.example-title {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #ddd;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.example-text {
+  max-width: 800px;
+}
+
+.example-compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.example-side, .example-side-produced {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f1f3f5;
+}
+
+.example-side-produced {
+  background: #e6f4ea;
+}
+
+.example-side-title, .example-side-title-produced, .example-live-title {
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.example-side-title-produced, .example-live-title {
+  color: #0a7d32;
+}
+
+.example-arrow {
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  color: #0a7d32;
+}
+
+.example-arrow::before {
+  content: "↓";
+}
+
+@media (min-width: 1000px) {
+  .example-compare {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+  .example-arrow::before {
+    content: "→";
+  }
+}
+.example-file {
+  margin-top: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: #666;
+  overflow-wrap: anywhere;
+}
+
+.example-note {
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+.code {
+  white-space: pre;
+  tab-size: 4;
+  overflow-x: auto;
+  padding: 12px 16px;
+  border-radius: 6px;
+  background: #1e1e1e;
+  color: #eee;
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+}
+
+.example-live {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 2px dashed #0a7d32;
+  border-radius: 10px;
+}
+
+.example-link {
+  color: #0a7d32;
+  font-weight: bold;
+}
+
+.index-authors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, max-content));
+  gap: 16px 32px;
+}
+
+.index-year {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .example-compare {
+    padding: 6px;
+  }
+  .example-side, .example-side-produced {
+    padding: 8px;
+  }
+  .code {
+    padding: 10px;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

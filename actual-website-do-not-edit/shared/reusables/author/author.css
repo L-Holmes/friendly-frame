@@ -1,0 +1,13 @@
+.author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.author img {
+  width: 44px;
+  height: 44px;
+}
+
+/*# sourceMappingURL=author.css.map */

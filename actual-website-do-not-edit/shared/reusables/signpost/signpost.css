@@ -1,0 +1,10 @@
+.signpost {
+  display: flex;
+  gap: 16px;
+}
+
+.signpost a {
+  color: inherit;
+}
+
+/*# sourceMappingURL=signpost.css.map */

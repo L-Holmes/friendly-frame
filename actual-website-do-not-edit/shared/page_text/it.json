@@ -1,0 +1,36 @@
+{
+    "index": {
+        "welcome": "Benvenuto!",
+        "intro": "Questo sito è stato creato interamente con Friendly Frame, un piccolo generatore di siti statici e framework web. Ogni sezione qui sotto mostra una delle sue funzionalità: il risultato, cosa è stato scritto in edit-me/, e in cosa è stato compilato in actual-website-do-not-edit/.",
+        "you_write": "Tu scrivi",
+        "produces": "Viene compilato in",
+        "live": "Esempio dal vivo",
+
+        "reusables_title": "Elementi riutilizzabili",
+        "reusables_live": "Queste due schede autore sono lo stesso elemento riutilizzabile, ognuna con un'immagine diversa. Anche la barra in alto di questa pagina è uno di questi.",
+        "reusables_text": "Scrivi qualcosa una sola volta in edit-me/shared/reusables/ (i suoi file .scss e .ts vengono collegati automaticamente), aggiungilo all'ordine di compilazione sotto tutto ciò che usa, poi usalo in qualsiasi pagina con un solo tag. {x} diventa il valore che gli dai, [x] un nome ricavato da quel nome di file, @template:x un altro elemento riutilizzabile, e @none: niente.",
+
+        "ts_title": "Typescript riutilizzabile",
+        "ts_live": "L'anno corrente, calcolato da index.js nel tuo browser:",
+        "ts_text": "In qualsiasi file .ts, &lt;r-currentYear&gt; viene sostituito con edit-me/shared/code/currentYear.ts.",
+
+        "paths_title": "Percorsi",
+        "paths_live": "Questo articolo del blog è una cartella più in basso, ma carica comunque lo stesso foglio di stile, tramite ../shared/global.css:",
+        "paths_text": "&lt;root&gt; diventa il percorso che riporta alla radice del sito, ovunque finisca il file.",
+
+        "text_title": "Aggiungere testo",
+        "text_live": "Cambia lingua: cambia tutto tranne il codice, e resti nello stesso punto della pagina.",
+        "text_text": "Il testo va in edit-me/shared/page_text/, un file per lingua. Ogni pagina viene compilata una volta per ogni lingua, e index.html riceve la lingua predefinita (en).",
+
+        "blogs_title": "Blog",
+        "blogs_live": "Gli articoli del blog, ognuno lungo solo tre righe:",
+        "blogs_text": "Qualsiasi pagina che finisce in actual-website-do-not-edit/blog/ ha bisogno solo del suo contenuto: il resto della pagina arriva dai due modelli del blog."
+    },
+    "blog": {
+        "first_title": "Il mio primo articolo",
+        "first_text": "Questo file contiene solo un titolo, un autore e questa frase.",
+        "second_title": "Il mio secondo articolo",
+        "second_text": "Stessi modelli, contenuto diverso.",
+        "back": "← Torna alla home"
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "index": {
+        "welcome": "Welcome!",
+        "intro": "This whole website was made with Friendly Frame, a small static site generator and web framework. Each section below shows one of its features: the result, what was written in edit-me/, and what that got compiled into in actual-website-do-not-edit/.",
+        "you_write": "You write",
+        "produces": "Compiles into",
+        "live": "Live example",
+
+        "reusables_title": "Reusable elements",
+        "reusables_live": "These two author cards are the same reusable element, each given a different picture. The top bar of this page is one too.",
+        "reusables_text": "Write something once in edit-me/shared/reusables/ (its .scss and .ts get linked automatically), add it to the compilation order below anything it uses, then use it on any page with one tag. {x} becomes the value you give it, [x] a name made from that file name, @template:x another reusable element, and @none: nothing.",
+
+        "ts_title": "Reusable typescript",
+        "ts_live": "This year, worked out by index.js in your browser:",
+        "ts_text": "In any .ts file, &lt;r-currentYear&gt; is replaced with edit-me/shared/code/currentYear.ts.",
+
+        "paths_title": "Paths",
+        "paths_live": "This blog post is one folder down, but still loads the same stylesheet, through ../shared/global.css:",
+        "paths_text": "&lt;root&gt; becomes the path back to the root of the website, from wherever the file ends up.",
+
+        "text_title": "Adding text",
+        "text_live": "Switch language: everything except the code changes, and you stay at the same place on the page.",
+        "text_text": "Text goes in edit-me/shared/page_text/, one file per language. Each page gets compiled once per language, and index.html gets the default language (en).",
+
+        "blogs_title": "Blogs",
+        "blogs_live": "The blog posts, each only three lines long:",
+        "blogs_text": "Any page that ends up in actual-website-do-not-edit/blog/ only needs its content: the rest of the page comes from the two blog templates."
+    },
+    "blog": {
+        "first_title": "My first post",
+        "first_text": "This file only has a title, an author and this sentence.",
+        "second_title": "My second post",
+        "second_text": "Same templates, different content.",
+        "back": "← Back home"
+    }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Friendly Frame</title>
+		<link rel="stylesheet" href="shared/global.css">
+		<link rel="stylesheet" href="index.css">
+		<script defer src="index.js"></script>
+	<link rel="stylesheet" href="shared/reusables/top-bar/top-bar.css">
+<link rel="stylesheet" href="shared/reusables/signpost/signpost.css">
+<script defer src="shared/reusables/signpost/signpost.js"></script>
+<link rel="stylesheet" href="shared/reusables/author/author.css">
+</head>
+	<body>
+		<div class="top-bar">
+	<div class="top-bar-title">Friendly Frame</div>
+	<div class="top-bar-subtitle"></div>
+	<div class="signpost">
+	<a href="en-index.html">English</a>
+	<a href="it-index.html">Italiano</a>
+</div>
+
+</div>
+
+
+		<div class="index-content">
+			<div class="index-title"><div>Benvenuto!</div></div>
+			<div class="index-intro"><div>Questo sito è stato creato interamente con Friendly Frame, un piccolo generatore di siti statici e framework web. Ogni sezione qui sotto mostra una delle sue funzionalità: il risultato, cosa è stato scritto in edit-me/, e in cosa è stato compilato in actual-website-do-not-edit/.</div></div>
+
+			<!-- ================= Reusable elements ================= -->
+			<div class="example">
+				<div class="example-title"><div>Elementi riutilizzabili</div></div>
+				<div class="example-live">
+					<div class="example-live-title"><div>Esempio dal vivo</div></div>
+					<div class="example-note"><div>Queste due schede autore sono lo stesso elemento riutilizzabile, ognuna con un'immagine diversa. Anche la barra in alto di questa pagina è uno di questi.</div></div>
+					<div class="index-authors">
+						<div class="author">
+	<img src="shared/images/authors.jane_doe.svg" alt="">
+	Jane Doe
+</div>
+
+						<div class="author">
+	<img src="shared/images/authors.john_smith.svg" alt="">
+	John Smith
+</div>
+
+					</div>
+				</div>
+				<div class="example-text"><div>Scrivi qualcosa una sola volta in edit-me/shared/reusables/ (i suoi file .scss e .ts vengono collegati automaticamente), aggiungilo all'ordine di compilazione sotto tutto ciò che usa, poi usalo in qualsiasi pagina con un solo tag. {x} diventa il valore che gli dai, [x] un nome ricavato da quel nome di file, @template:x un altro elemento riutilizzabile, e @none: niente.</div></div>
+				<div class="example-compare">
+					<div class="example-side">
+						<div class="example-side-title"><div>Tu scrivi</div></div>
+						<div class="example-file">edit-me/pages/index/index.html</div>
+						<div class="code">&lt;r-top-bar title="Friendly Frame" inner=@template:signpost subtitle=@none:&gt;
+...
+&lt;r-author picture="authors.jane_doe.svg"&gt;
+&lt;r-author picture="authors.john_smith.svg"&gt;</div>
+						<div class="example-file">edit-me/shared/reusables/top-bar/top-bar.html</div>
+						<div class="code">&lt;div class="top-bar"&gt;
+	&lt;div class="top-bar-title"&gt;{title}&lt;/div&gt;
+	&lt;div class="top-bar-subtitle"&gt;{subtitle}&lt;/div&gt;
+	{inner}
+&lt;/div&gt;</div>
+						<div class="example-file">edit-me/shared/reusables/signpost/signpost.html</div>
+						<div class="code">&lt;div class="signpost"&gt;
+	&lt;a href="&lt;root&gt;/en-index.html"&gt;English&lt;/a&gt;
+	&lt;a href="&lt;root&gt;/it-index.html"&gt;Italiano&lt;/a&gt;
+&lt;/div&gt;</div>
+						<div class="example-file">edit-me/shared/reusables/author/author.html</div>
+						<div class="code">&lt;div class="author"&gt;
+	&lt;img src="&lt;root&gt;/shared/images/{picture}" alt=""&gt;
+	[picture]
+&lt;/div&gt;</div>
+						<div class="example-file">edit-me/shared/reusables-compilation-order.txt</div>
+						<div class="code">code
+reusables/signpost
+reusables/author
+reusables/top-bar</div>
+					</div>
+					<div class="example-arrow"></div>
+					<div class="example-side-produced">
+						<div class="example-side-title-produced"><div>Viene compilato in</div></div>
+						<div class="example-file">actual-website-do-not-edit/index.html</div>
+						<div class="code">&lt;head&gt;
+	...
+	&lt;link rel="stylesheet" href="shared/reusables/top-bar/top-bar.css"&gt;
+	&lt;link rel="stylesheet" href="shared/reusables/signpost/signpost.css"&gt;
+	&lt;script defer src="shared/reusables/signpost/signpost.js"&gt;&lt;/script&gt;
+	&lt;link rel="stylesheet" href="shared/reusables/author/author.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class="top-bar"&gt;
+		&lt;div class="top-bar-title"&gt;Friendly Frame&lt;/div&gt;
+		&lt;div class="top-bar-subtitle"&gt;&lt;/div&gt;
+		&lt;div class="signpost"&gt;
+			&lt;a href="en-index.html"&gt;English&lt;/a&gt;
+			&lt;a href="it-index.html"&gt;Italiano&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	...
+	&lt;div class="author"&gt;
+		&lt;img src="shared/images/authors.jane_doe.svg" alt=""&gt;
+		Jane Doe
+	&lt;/div&gt;
+	&lt;div class="author"&gt;
+		&lt;img src="shared/images/authors.john_smith.svg" alt=""&gt;
+		John Smith
+	&lt;/div&gt;
+	...
+&lt;/body&gt;</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ================= Reusable typescript ================= -->
+			<div class="example">
+				<div class="example-title"><div>Typescript riutilizzabile</div></div>
+				<div class="example-live">
+					<div class="example-live-title"><div>Esempio dal vivo</div></div>
+					<div class="example-note"><div>L'anno corrente, calcolato da index.js nel tuo browser:</div></div>
+					<div class="index-year"></div>
+				</div>
+				<div class="example-text"><div>In qualsiasi file .ts, &lt;r-currentYear&gt; viene sostituito con edit-me/shared/code/currentYear.ts.</div></div>
+				<div class="example-compare">
+					<div class="example-side">
+						<div class="example-side-title"><div>Tu scrivi</div></div>
+						<div class="example-file">edit-me/pages/index/index.ts</div>
+						<div class="code">&lt;r-currentYear&gt;
+
+const year = document.querySelector(".index-year");
+if (year) year.textContent = currentYear();</div>
+						<div class="example-file">edit-me/shared/code/currentYear.ts</div>
+						<div class="code">function currentYear(): string {
+	return new Date().getFullYear().toString();
+}</div>
+					</div>
+					<div class="example-arrow"></div>
+					<div class="example-side-produced">
+						<div class="example-side-title-produced"><div>Viene compilato in</div></div>
+						<div class="example-file">actual-website-do-not-edit/index.js</div>
+						<div class="code">"use strict";
+function currentYear() {
+    return new Date().getFullYear().toString();
+}
+const year = document.querySelector(".index-year");
+if (year)
+    year.textContent = currentYear();</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ================= Paths ================= -->
+			<div class="example">
+				<div class="example-title"><div>Percorsi</div></div>
+				<div class="example-live">
+					<div class="example-live-title"><div>Esempio dal vivo</div></div>
+					<div class="example-note"><div>Questo articolo del blog è una cartella più in basso, ma carica comunque lo stesso foglio di stile, tramite ../shared/global.css:</div></div>
+					<a class="example-link" href="blog/first-post.html"><div>Il mio primo articolo</div></a>
+				</div>
+				<div class="example-text"><div>&lt;root&gt; diventa il percorso che riporta alla radice del sito, ovunque finisca il file.</div></div>
+				<div class="example-compare">
+					<div class="example-side">
+						<div class="example-side-title"><div>Tu scrivi</div></div>
+						<div class="example-file">edit-me/pages/index/index.html</div>
+						<div class="code">&lt;link rel="stylesheet" href="&lt;root&gt;/shared/global.css"&gt;</div>
+						<div class="example-file">edit-me/shared/reusables/template-blog-top/template-blog-top.html</div>
+						<div class="code">&lt;link rel="stylesheet" href="&lt;root&gt;/shared/global.css"&gt;</div>
+					</div>
+					<div class="example-arrow"></div>
+					<div class="example-side-produced">
+						<div class="example-side-title-produced"><div>Viene compilato in</div></div>
+						<div class="example-file">actual-website-do-not-edit/index.html</div>
+						<div class="code">&lt;link rel="stylesheet" href="shared/global.css"&gt;</div>
+						<div class="example-file">actual-website-do-not-edit/blog/first-post.html</div>
+						<div class="code">&lt;link rel="stylesheet" href="../shared/global.css"&gt;</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ================= Adding text ================= -->
+			<div class="example">
+				<div class="example-title"><div>Aggiungere testo</div></div>
+				<div class="example-live">
+					<div class="example-live-title"><div>Esempio dal vivo</div></div>
+					<div class="example-note"><div>Cambia lingua: cambia tutto tranne il codice, e resti nello stesso punto della pagina.</div></div>
+					<div class="signpost">
+	<a href="en-index.html">English</a>
+	<a href="it-index.html">Italiano</a>
+</div>
+
+				</div>
+				<div class="example-text"><div>Il testo va in edit-me/shared/page_text/, un file per lingua. Ogni pagina viene compilata una volta per ogni lingua, e index.html riceve la lingua predefinita (en).</div></div>
+				<div class="example-compare">
+					<div class="example-side">
+						<div class="example-side-title"><div>Tu scrivi</div></div>
+						<div class="example-file">edit-me/pages/index/index.html</div>
+						<div class="code">&lt;div class="index-title"&gt;&lt;div&gt;TEXT=index.welcome&lt;/div&gt;&lt;/div&gt;</div>
+						<div class="example-file">edit-me/shared/page_text/en.json</div>
+						<div class="code">{
+    "index": {
+        "welcome": "Welcome!",
+        ...
+    },
+    ...
+}</div>
+						<div class="example-file">edit-me/shared/page_text/it.json</div>
+						<div class="code">{
+    "index": {
+        "welcome": "Benvenuto!",
+        ...
+    },
+    ...
+}</div>
+					</div>
+					<div class="example-arrow"></div>
+					<div class="example-side-produced">
+						<div class="example-side-title-produced"><div>Viene compilato in</div></div>
+						<div class="example-file">actual-website-do-not-edit/index.html + en-index.html</div>
+						<div class="code">&lt;div class="index-title"&gt;&lt;div&gt;Welcome!&lt;/div&gt;&lt;/div&gt;</div>
+						<div class="example-file">actual-website-do-not-edit/it-index.html</div>
+						<div class="code">&lt;div class="index-title"&gt;&lt;div&gt;Benvenuto!&lt;/div&gt;&lt;/div&gt;</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ================= Blogs ================= -->
+			<div class="example">
+				<div class="example-title"><div>Blog</div></div>
+				<div class="example-live">
+					<div class="example-live-title"><div>Esempio dal vivo</div></div>
+					<div class="example-note"><div>Gli articoli del blog, ognuno lungo solo tre righe:</div></div>
+					<a class="example-link" href="blog/first-post.html"><div>Il mio primo articolo</div></a>
+					<a class="example-link" href="blog/second-post.html"><div>Il mio secondo articolo</div></a>
+				</div>
+				<div class="example-text"><div>Qualsiasi pagina che finisce in actual-website-do-not-edit/blog/ ha bisogno solo del suo contenuto: il resto della pagina arriva dai due modelli del blog.</div></div>
+				<div class="example-compare">
+					<div class="example-side">
+						<div class="example-side-title"><div>Tu scrivi</div></div>
+						<div class="example-file">edit-me/pages/blogs/blog/first-post.html</div>
+						<div class="code">&lt;div class="blog-title"&gt;&lt;div&gt;TEXT=blog.first_title&lt;/div&gt;&lt;/div&gt;
+&lt;r-author picture="authors.jane_doe.svg"&gt;
+&lt;div&gt;TEXT=blog.first_text&lt;/div&gt;</div>
+						<div class="example-file">edit-me/shared/reusables/template-blog-top/template-blog-top.html</div>
+						<div class="code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+	&lt;head&gt;...&lt;/head&gt;
+	&lt;body&gt;
+		&lt;r-top-bar title="Friendly Frame" inner=@template:signpost subtitle="Blog"&gt;
+		&lt;div class="page-content"&gt;</div>
+						<div class="example-file">edit-me/shared/reusables/template-blog-bottom/template-blog-bottom.html</div>
+						<div class="code">			&lt;a href="&lt;root&gt;/index.html"&gt;&lt;div&gt;TEXT=blog.back&lt;/div&gt;&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</div>
+					</div>
+					<div class="example-arrow"></div>
+					<div class="example-side-produced">
+						<div class="example-side-title-produced"><div>Viene compilato in</div></div>
+						<div class="example-file">actual-website-do-not-edit/blog/first-post.html</div>
+						<div class="code">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+	&lt;head&gt;...&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class="top-bar"&gt;...&lt;/div&gt;
+		&lt;div class="page-content"&gt;
+			&lt;div class="blog-title"&gt;&lt;div&gt;My first post&lt;/div&gt;&lt;/div&gt;
+			&lt;div class="author"&gt;...&lt;/div&gt;
+			&lt;div&gt;This file only has a title, an author and this sentence.&lt;/div&gt;
+			&lt;a href="../index.html"&gt;&lt;div&gt;← Back home&lt;/div&gt;&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
