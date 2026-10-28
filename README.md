@@ -33,87 +33,178 @@ The example website in edit-me/ shows every feature below.
 # Coding guidance
 
 ## Reusable elements
-==> If you have code that will be shared amongst multiple pages..
-#### 1) Create the reusable element in the 'edit-me/shared/reusables' folder
-e.g. 'edit-me/shared/reusables/top-bar', with all of the usual files that a regular page would have:
-```bash
-top-bar.html
-top-bar.scss   # (optional) compiled + linked automatically
-top-bar.ts     # (optional) compiled + linked automatically
-```
-But! The html file would only be the body:
+**You write:**
+
+`edit-me/pages/index/index.html`
 ```html
-<div class="top-bar"> Hi, this is the top-bar! </div>
-```
-
-#### 2) Add it to 'edit-me/shared/reusables-compilation-order.txt'
-- Components are compiled in the order they are listed (lines that start with '#' are ignored)
-- If your component uses other components, place it lower down than the components it uses.
-
-#### 3) Reuse that component in your other pages
-```html
-<r-top-bar>
-```
-
-and if it requires additional parameters:
-```
 <r-top-bar title="Friendly Frame" inner=@template:signpost subtitle=@none:>
-
-# where top-bar.html is:
+...
+<r-author picture="authors.jane_doe.svg">
+```
+`edit-me/shared/reusables/top-bar/top-bar.html`
+```html
 <div class="top-bar">
-	<div class="top-bar-title">{title}</div>
-	<div class="top-bar-subtitle">{subtitle}</div>
-	{inner}
-</div>
-
-vvvvvvvvvvvvvvvvvvvvvv
-
-# produces:
-<div class="top-bar">
-	<div class="top-bar-title">Friendly Frame</div>
-	<div class="top-bar-subtitle"></div>
-	<div class="signpost"> ...the compiled signpost component... </div>
+    <div class="top-bar-title">{title}</div>
+    <div class="top-bar-subtitle">{subtitle}</div>
+    {inner}
 </div>
 ```
-`[param]` gives a display name from a filename instead, e.g. `picture="authors.jane_doe.svg"` -> `[picture]` = Jane Doe
+`edit-me/shared/reusables/author/author.html`
+```html
+<div class="author">
+    <img class="author-picture" src="<root>/shared/images/{picture}" alt="">
+    [picture]
+</div>
+```
+`edit-me/shared/reusables-compilation-order.txt`
+```
+code
+reusables/signpost
+reusables/author
+reusables/top-bar
+```
+**Compiles into:**
 
-## Reusable code
-In any .ts file, `<r-filename>` is replaced with edit-me/shared/code/filename.ts
-(add `code` to the top of the compilation order file)
+`actual-website-do-not-edit/index.html`
+```html
+<div class="top-bar">
+    <div class="top-bar-title">Friendly Frame</div>
+    <div class="top-bar-subtitle"></div>
+    <div class="signpost">...</div>
+</div>
+...
+<div class="author">
+    <img class="author-picture" src="shared/images/authors.jane_doe.svg" alt="">
+    Jane Doe
+</div>
+```
+Write something once in edit-me/shared/reusables/ (its .scss and .ts get linked automatically), add it to the compilation order below anything it uses, then use it on any page with one tag.
+`{x}` becomes the value you give it, `[x]` a name made from that file name, `@template:x` another reusable element, and `@none:` nothing.
+
+## Reusable typescript
+**You write:**
+
+`edit-me/pages/index/index.ts`
 ```ts
-//The below will be replaced with edit-me/shared/code/currentYear.ts once the website is compiled
 <r-currentYear>
+
+const year = document.querySelector(".index-year");
+if (year) year.textContent = currentYear();
 ```
+`edit-me/shared/code/currentYear.ts`
+```ts
+function currentYear(): string {
+    return new Date().getFullYear().toString();
+}
+```
+**Compiles into:**
+
+`actual-website-do-not-edit/index.js`
+```js
+"use strict";
+function currentYear() {
+    return new Date().getFullYear().toString();
+}
+const year = document.querySelector(".index-year");
+if (year)
+    year.textContent = currentYear();
+```
+In any .ts file, `<r-currentYear>` is replaced with edit-me/shared/code/currentYear.ts (add `code` to the top of the compilation order file).
 
 ## Paths
-- All paths are relative to the project root
-* Add a project root placeholder using:
-```html
-'<root>/path/to/thing.txt'
-```
+**You write:**
 
-e.g. to reference the file at: edit-me/shared/global.scss
+`edit-me/pages/index/index.html`
 ```html
-'<root>/shared/global.css'
+<link rel="stylesheet" href="<root>/shared/global.css">
 ```
-- File types this works on:
-    - any.
+`edit-me/shared/reusables/template-blog-top/template-blog-top.html`
+```html
+<link rel="stylesheet" href="<root>/shared/global.css">
+```
+**Compiles into:**
 
-## Adding text (we use a special method since each page is translatable!)
-1) Add the text to each language file in edit-me/shared/page_text/ (en.json, it.json...)
+`actual-website-do-not-edit/index.html`
+```html
+<link rel="stylesheet" href="shared/global.css">
+```
+`actual-website-do-not-edit/blog/first-post.html`
+```html
+<link rel="stylesheet" href="../shared/global.css">
+```
+`<root>` becomes the path back to the root of the website, from wherever the file ends up. Works on any file type.
+
+## Adding text
+**You write:**
+
+`edit-me/pages/index/index.html`
+```html
+<div class="index-title"><div>TEXT=index.welcome</div></div>
+```
+`edit-me/shared/page_text/en.json`
 ```json
-{ "index": { "welcome": "Welcome!" } }
+{ "index": { "welcome": "Welcome!", ... }, ... }
 ```
-2) .. and then for each div / heading etc. in which you want text:
+`edit-me/shared/page_text/it.json`
+```json
+{ "index": { "welcome": "Benvenuto!", ... }, ... }
+```
+**Compiles into:**
+
+`actual-website-do-not-edit/index.html` + `en-index.html`
 ```html
-<div>TEXT=index.welcome</div>
+<div class="index-title"><div>Welcome!</div></div>
 ```
---> each page is compiled once per language: en-index.html, it-index.html...
---> index.html gets the default language (en)
+`actual-website-do-not-edit/it-index.html`
+```html
+<div class="index-title"><div>Benvenuto!</div></div>
+```
+Text goes in edit-me/shared/page_text/, one file per language. Each page gets compiled once per language, and index.html gets the default language (en).
 
 ## Blogs
-Any page that ends up in actual-website-do-not-edit/blog/ only needs its content.
-It gets wrapped in the 'template-blog-top' and 'template-blog-bottom' reusable elements.
+**You write:**
+
+`edit-me/pages/blogs/blog/first-post.html`
+```html
+<div class="blog-title"><div>TEXT=blog.first_title</div></div>
+<r-author picture="authors.jane_doe.svg">
+<div>TEXT=blog.first_text</div>
+```
+`edit-me/shared/reusables/template-blog-top/template-blog-top.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>...</head>
+    <body>
+        <r-top-bar title="Friendly Frame" inner=@template:signpost subtitle="Blog">
+        <div class="page-content">
+```
+`edit-me/shared/reusables/template-blog-bottom/template-blog-bottom.html`
+```html
+            <a href="<root>/index.html"><div>TEXT=blog.back</div></a>
+        </div>
+    </body>
+</html>
+```
+**Compiles into:**
+
+`actual-website-do-not-edit/blog/first-post.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>...</head>
+    <body>
+        <div class="top-bar">...</div>
+        <div class="page-content">
+            <div class="blog-title"><div>My first post</div></div>
+            <div class="author">...</div>
+            <div>This file only has a title, an author and this sentence.</div>
+            <a href="../index.html"><div>← Back home</div></a>
+        </div>
+    </body>
+</html>
+```
+Any page that ends up in actual-website-do-not-edit/blog/ only needs its content: the rest of the page comes from the two blog templates.
 
 
 # Technology used
